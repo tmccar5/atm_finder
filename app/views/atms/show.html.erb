@@ -1,10 +1,25 @@
+<%= @atm.latitude %>
+<%= @atm.longitude %></br>
 
-	<%= @atm.latitude %>
-	<%= @atm.longitude %>
-<!-- https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=39.18619,-76.854895&keyword=coffee&types=cafe&rankby=distance&key= -->
+<% @test["results"][0..9].each do |n| %>
+	<%= n["name"] %>
+	<%= n["vicinity"] %> </br>
+<%end%>
 
-<!-- https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=39.18619,-76.854895&keyword=coffee&types=cafe&rankby=distance&key=AIzaSyAny_eoq9b1UGL7Ow20vDTet9yIBb60BwA -->
 
 
-<!-- https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=39.18619,-76.854895&keyword=atm&types=atm&rankby=distance&key=AIzaSyAny_eoq9b1UGL7Ow20vDTet9yIBb60BwA -->
+  <div id="map" style='width: 500px; height: 400px;'></div>
 
+
+<script>
+  function initMap() {
+    var mapDiv = document.getElementById('map');
+    var map = new google.maps.Map(mapDiv, {
+      center: {lat: 44.540, lng: -78.546},
+      zoom: 8
+    });
+  }
+</script>
+<script src="https://maps.googleapis.com/maps/api/js?callback=initMap&key=AIzaSyCPwM-ZPcwMIyqNqVPdfi-y8LoBerEl3WU"
+         async defer>
+</script>

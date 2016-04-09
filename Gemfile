@@ -1,5 +1,8 @@
 source 'https://rubygems.org'
 
+gem 'underscore-rails'
+gem 'gmaps4rails', '~> 2.1', '>= 2.1.2'
+
 gem 'httparty', '~> 0.13.7'
 
 gem 'geocoder'
