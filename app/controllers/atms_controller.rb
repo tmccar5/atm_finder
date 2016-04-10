@@ -23,6 +23,7 @@ class AtmsController < ApplicationController
 		@atm = Atm.find(params[:id])
 		response = Atm.get("https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=#{@atm.latitude},#{@atm.longitude}&keyword=atm&types=atm&rankby=distance&key=AIzaSyAny_eoq9b1UGL7Ow20vDTet9yIBb60BwA")
 		@test = response.parsed_response
+		@place_id = @test['results'][0]['place_id']
 	end
 
 

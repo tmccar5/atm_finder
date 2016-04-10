@@ -1,13 +1,10 @@
+
 <%= @atm.latitude %>
 <%= @atm.longitude %></br>
-
-<%= @lat_results %>
 
 <% @test["results"][0..9].each do |n| %>
 	<%= n["name"] %>
 	<%= n["vicinity"] %> </br>
-<!-- 	<%= n["geometry"]["location"]["lat"] %>
-	<%= n["geometry"]["location"]["lng"] %> -->
 <%end%></br>
 </br>
 
@@ -20,53 +17,226 @@
 
 <script>
   function initMap() {
-    var mapDiv = document.getElementById('map');
-    var map = new google.maps.Map(mapDiv, {
+    var map = new google.maps.Map(document.getElementById('map'), {
       center: {lat: <%=@atm.latitude%>, lng: <%=@atm.longitude%>},
-      zoom: 14
+      zoom: 13
     });
-    var marker = new google.maps.Marker({
-    position: {lat: <%= @test["results"][0]["geometry"]["location"]["lat"] %>, lng: <%= @test["results"][0]["geometry"]["location"]["lng"] %>},
-    map: map,
-    });
-    var marker = new google.maps.Marker({
-    position: {lat: <%= @test["results"][1]["geometry"]["location"]["lat"] %>, lng: <%= @test["results"][1]["geometry"]["location"]["lng"] %>},
-    map: map,
-    });
-    var marker = new google.maps.Marker({
-    position: {lat: <%= @test["results"][2]["geometry"]["location"]["lat"] %>, lng: <%= @test["results"][2]["geometry"]["location"]["lng"] %>},
-    map: map,
-    });
-    var marker = new google.maps.Marker({
-    position: {lat: <%= @test["results"][3]["geometry"]["location"]["lat"] %>, lng: <%= @test["results"][3]["geometry"]["location"]["lng"] %>},
-    map: map,
-    });
-    var marker = new google.maps.Marker({
-    position: {lat: <%= @test["results"][4]["geometry"]["location"]["lat"] %>, lng: <%= @test["results"][4]["geometry"]["location"]["lng"] %>},
-    map: map,
-    });
-    var marker = new google.maps.Marker({
-    position: {lat: <%= @test["results"][5]["geometry"]["location"]["lat"] %>, lng: <%= @test["results"][5]["geometry"]["location"]["lng"] %>},
-    map: map,
-    });
-    var marker = new google.maps.Marker({
-    position: {lat: <%= @test["results"][6]["geometry"]["location"]["lat"] %>, lng: <%= @test["results"][6]["geometry"]["location"]["lng"] %>},
-    map: map,
-    });
-    var marker = new google.maps.Marker({
-    position: {lat: <%= @test["results"][7]["geometry"]["location"]["lat"] %>, lng: <%= @test["results"][7]["geometry"]["location"]["lng"] %>},
-    map: map,
-    });
-    var marker = new google.maps.Marker({
-    position: {lat: <%= @test["results"][8]["geometry"]["location"]["lat"] %>, lng: <%= @test["results"][8]["geometry"]["location"]["lng"] %>},
-    map: map,
-    });
-    var marker = new google.maps.Marker({
-    position: {lat: <%= @test["results"][9]["geometry"]["location"]["lat"] %>, lng: <%= @test["results"][9]["geometry"]["location"]["lng"] %>},
-    map: map,
-    });
+    var infowindow = new google.maps.InfoWindow();
+    var service = new google.maps.places.PlacesService(map);
+
+    
+
+//maybe try this up by putting the place_id's in an array and then looping through it?
+    service.getDetails({
+      placeId: '<%= @test['results'][0]['place_id'] %>'
+        }, function(place, status) {
+          if (status === google.maps.places.PlacesServiceStatus.OK) {
+            var marker = new google.maps.Marker({
+              map: map,
+              animation: google.maps.Animation.DROP,
+              position: place.geometry.location
+            });
+            google.maps.event.addListener(marker, 'click', function() {
+              infowindow.setContent('<div><strong>' + place.name + '</strong><br>' +
+                place.formatted_address + '</div>');
+              infowindow.open(map, this);
+            });
+          }
+        });
+    service.getDetails({
+      placeId: '<%= @test['results'][1]['place_id'] %>'
+        }, function(place, status) {
+          if (status === google.maps.places.PlacesServiceStatus.OK) {
+            var marker = new google.maps.Marker({
+              map: map,
+              animation: google.maps.Animation.DROP,
+              position: place.geometry.location
+            });
+            google.maps.event.addListener(marker, 'click', function() {
+              infowindow.setContent('<div><strong>' + place.name + '</strong><br>' +
+                place.formatted_address + '</div>');
+              infowindow.open(map, this);
+            });
+          }
+        });
+    service.getDetails({
+      placeId: '<%= @test['results'][2]['place_id'] %>'
+        }, function(place, status) {
+          if (status === google.maps.places.PlacesServiceStatus.OK) {
+            var marker = new google.maps.Marker({
+              map: map,
+              animation: google.maps.Animation.DROP,
+              position: place.geometry.location
+            });
+            google.maps.event.addListener(marker, 'click', function() {
+              infowindow.setContent('<div><strong>' + place.name + '</strong><br>' +
+                place.formatted_address + '</div>');
+              infowindow.open(map, this);
+            });
+          }
+        });
+    service.getDetails({
+      placeId: '<%= @test['results'][3]['place_id'] %>'
+        }, function(place, status) {
+          if (status === google.maps.places.PlacesServiceStatus.OK) {
+            var marker = new google.maps.Marker({
+              map: map,
+              animation: google.maps.Animation.DROP,
+              position: place.geometry.location
+            });
+            google.maps.event.addListener(marker, 'click', function() {
+              infowindow.setContent('<div><strong>' + place.name + '</strong><br>' +
+                place.formatted_address + '</div>');
+              infowindow.open(map, this);
+            });
+          }
+        });
+    service.getDetails({
+      placeId: '<%= @test['results'][4]['place_id'] %>'
+        }, function(place, status) {
+          if (status === google.maps.places.PlacesServiceStatus.OK) {
+            var marker = new google.maps.Marker({
+              map: map,
+              animation: google.maps.Animation.DROP,
+              position: place.geometry.location
+            });
+            google.maps.event.addListener(marker, 'click', function() {
+              infowindow.setContent('<div><strong>' + place.name + '</strong><br>' +
+                place.formatted_address + '</div>');
+              infowindow.open(map, this);
+            });
+          }
+        });
+    service.getDetails({
+      placeId: '<%= @test['results'][5]['place_id'] %>'
+        }, function(place, status) {
+          if (status === google.maps.places.PlacesServiceStatus.OK) {
+            var marker = new google.maps.Marker({
+              map: map,
+              animation: google.maps.Animation.DROP,
+              position: place.geometry.location
+            });
+            google.maps.event.addListener(marker, 'click', function() {
+              infowindow.setContent('<div><strong>' + place.name + '</strong><br>' +
+                place.formatted_address + '</div>');
+              infowindow.open(map, this);
+            });
+          }
+        });
+    service.getDetails({
+      placeId: '<%= @test['results'][6]['place_id'] %>'
+        }, function(place, status) {
+          if (status === google.maps.places.PlacesServiceStatus.OK) {
+            var marker = new google.maps.Marker({
+              map: map,
+              animation: google.maps.Animation.DROP,
+              position: place.geometry.location
+            });
+            google.maps.event.addListener(marker, 'click', function() {
+              infowindow.setContent('<div><strong>' + place.name + '</strong><br>' +
+                place.formatted_address + '</div>');
+              infowindow.open(map, this);
+            });
+          }
+        });
+    service.getDetails({
+      placeId: '<%= @test['results'][7]['place_id'] %>'
+        }, function(place, status) {
+          if (status === google.maps.places.PlacesServiceStatus.OK) {
+            var marker = new google.maps.Marker({
+              map: map,
+              animation: google.maps.Animation.DROP,
+              position: place.geometry.location
+            });
+            google.maps.event.addListener(marker, 'click', function() {
+              infowindow.setContent('<div><strong>' + place.name + '</strong><br>' +
+                place.formatted_address + '</div>');
+              infowindow.open(map, this);
+            });
+          }
+        });
+    service.getDetails({
+      placeId: '<%= @test['results'][8]['place_id'] %>'
+        }, function(place, status) {
+          if (status === google.maps.places.PlacesServiceStatus.OK) {
+            var marker = new google.maps.Marker({
+              map: map,
+              animation: google.maps.Animation.DROP,
+              position: place.geometry.location
+            });
+            google.maps.event.addListener(marker, 'click', function() {
+              infowindow.setContent('<div><strong>' + place.name + '</strong><br>' +
+                place.formatted_address + '</div>');
+              infowindow.open(map, this);
+            });
+          }
+        });
+    service.getDetails({
+      placeId: '<%= @test['results'][9]['place_id'] %>'
+        }, function(place, status) {
+          if (status === google.maps.places.PlacesServiceStatus.OK) {
+            var marker = new google.maps.Marker({
+              map: map,
+              animation: google.maps.Animation.DROP,
+              position: place.geometry.location
+            });
+            google.maps.event.addListener(marker, 'click', function() {
+              infowindow.setContent('<div><strong>' + place.name + '</strong><br>' +
+                place.formatted_address + '</div>');
+              infowindow.open(map, this);
+            });
+          }
+        });
+
+
+
+    //delay drop animation effect - try to somehow merge this timeout with the above places code
+
+
+
+
+    // var atm_positions = [
+    //   {lat: <%= @test["results"][0]["geometry"]["location"]["lat"] %>, lng: <%= @test["results"][0]["geometry"]["location"]["lng"]%>},
+    //   {lat: <%= @test["results"][1]["geometry"]["location"]["lat"] %>, lng: <%= @test["results"][1]["geometry"]["location"]["lng"] %>},
+    //   {lat: <%= @test["results"][2]["geometry"]["location"]["lat"] %>, lng: <%= @test["results"][2]["geometry"]["location"]["lng"] %>},
+    //   {lat: <%= @test["results"][3]["geometry"]["location"]["lat"] %>, lng: <%= @test["results"][3]["geometry"]["location"]["lng"] %>},
+    //   {lat: <%= @test["results"][4]["geometry"]["location"]["lat"] %>, lng: <%= @test["results"][4]["geometry"]["location"]["lng"] %>},
+    //   {lat: <%= @test["results"][5]["geometry"]["location"]["lat"] %>, lng: <%= @test["results"][5]["geometry"]["location"]["lng"] %>},
+    //   {lat: <%= @test["results"][6]["geometry"]["location"]["lat"] %>, lng: <%= @test["results"][6]["geometry"]["location"]["lng"] %>},
+    //   {lat: <%= @test["results"][7]["geometry"]["location"]["lat"] %>, lng: <%= @test["results"][7]["geometry"]["location"]["lng"] %>},
+    //   {lat: <%= @test["results"][8]["geometry"]["location"]["lat"] %>, lng: <%= @test["results"][8]["geometry"]["location"]["lng"] %>},
+    //   {lat: <%= @test["results"][9]["geometry"]["location"]["lat"] %>, lng: <%= @test["results"][9]["geometry"]["location"]["lng"] %>},
+    // ];
+    // var markers = [];
+
+    // function drop() {
+    //     clearMarkers();
+    //     for (var i = 0; i < atm_positions.length; i++) {
+    //       addMarkerWithTimeout(atm_positions[i], i * 200);
+    //     }
+    //   }
+
+    // function addMarkerWithTimeout(position, timeout) {
+    //     window.setTimeout(function() {
+    //       markers.push(new google.maps.Marker({
+    //         position: position,
+    //         map: map,
+    //         animation: google.maps.Animation.DROP
+    //       }));
+    //     }, timeout);
+    //   }
+
+    // function clearMarkers() {
+    //     for (var i = 0; i < markers.length; i++) {
+    //       markers[i].setMap(null);
+    //     }
+    //     markers = [];
+    //   }
+    
+    // drop();
+
   }
 </script>
-<script src="https://maps.googleapis.com/maps/api/js?callback=initMap&key=AIzaSyCPwM-ZPcwMIyqNqVPdfi-y8LoBerEl3WU"
+<script src="https://maps.googleapis.com/maps/api/js?callback=initMap&key=AIzaSyCPwM-ZPcwMIyqNqVPdfi-y8LoBerEl3WU&libraries=places"
          async defer>
 </script>
