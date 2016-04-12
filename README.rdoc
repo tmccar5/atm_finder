@@ -1,28 +1,9 @@
-== README
+== ATM FINDER
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Hello, thank you for taking the time to check out my repository!
 
-Things you may want to cover:
+This is my ATM Finder app which uses the HTTParty gem to interact with the google maps and places API
 
-* Ruby version
+Simply type in your address and a list of the 10 closest ATM's will appear on the google map
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
-
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+Any questions or improvements please let me know, thank you!
